@@ -1,0 +1,22 @@
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .table-container {
+    display: flex;
+  }
+  
+  .films-table,
+  .categories-table {
+    flex-basis: 50%;
+    margin: 0 10px;
+  }
+
+  .sakila{
+    margin-right: 16em;
+  }
+
+  h5{
+    margin: 2em;
+  }
