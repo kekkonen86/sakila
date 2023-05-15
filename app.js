@@ -27,8 +27,7 @@ const connection = mysql.createConnection({
 
   app.get('/films', (req, res) => {
     const { hae } = req.query;
-    const searchQuery = hae || ''; // Provide a default value of an empty string if hae is undefined
-  
+    const searchQuery = hae || ''; 
     let filmQuery = 'SELECT * FROM film';
     const categoryQuery = 'SELECT * FROM category';
   
@@ -48,7 +47,34 @@ const connection = mysql.createConnection({
       });
     });
   });
-    
+
+  app.get('/films/:id', (req, res) => {
+    const filmId = req.params.id;
+    const filmQuery = `SELECT * FROM film WHERE film_id = ${filmId}`;
+    const filmTextQuery = `SELECT * FROM film_text WHERE film_id = ${filmId}`;
+    const query = 'SELECT * FROM films WHERE title LIKE ?';
+    const searchQuery = req.query.hae ? '%' + req.query.hae + '%' : ''; 
+  
+    connection.query(filmQuery, (filmError, filmResults) => {
+      if (filmError) {
+        console.error('Error executing the film query:', filmError);
+        return;
+      }
+  
+      connection.query(filmTextQuery, (filmTextError, filmTextResults) => {
+        if (filmTextError) {
+          console.error('Error executing the film_text query:', filmTextError);
+          return;
+        }
+  
+        const film = filmResults[0]; 
+        const filmText = filmTextResults[0]; 
+  
+        res.render('film-details', { film, filmText, searchQuery });
+      });
+    });
+  });
+        
     app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
   });

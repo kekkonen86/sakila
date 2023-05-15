@@ -27,11 +27,63 @@
   }
 
   .highlight {
-    background-color: yellow;
+    background-color: #92010c;
+    color: white;
   }
   .highlight2 {
-    background-color: yellow;
+    background-color: #92010c;
+    color: white;
+
   }
+  .highlight tr {
+    background-color: #92010c;
+    color: white;
+  }
+  .highlight2 tr {
+    background-color: #92010c;
+    color: white;
+
+  }
+  .highlight td {
+    background-color: #92010c;
+    color: white;
+  }
+  .highlight2 td {
+    background-color: #92010c;
+    color: white;
+
+  }
+
+  .highlight-row {
+    background-color: #92010c;
+    color: white;
+
+}
+
+.highlight-row td {
+  background-color: #92010c;
+  color: white;
+}
+
+.highlight-row tr {
+  background-color: #92010c;
+  color: white;
+}
+
+.films-table .highlight-row {
+  background-color: #92010c;
+  color: white;
+}
+
+.films-table .highlight-row td {
+  background-color: #92010c;
+  color: white;
+}
+
+table.styled-table .highlight-row td {
+  background-color: #92010c;
+  color: white;
+}
   
   .navi{
     background-color: #373435;
@@ -112,4 +164,9 @@ button:hover {
   border-radius: 50%; 
   object-fit: cover; 
   object-position: center;
+}
+
+.films-table a {
+  text-decoration: none;
+  color: black;
 }

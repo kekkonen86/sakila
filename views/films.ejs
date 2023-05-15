@@ -10,70 +10,80 @@
 <div class="container">
 <div class="table-container">
 <div class="films-table">
-<table class="styled-table">
+  <table class="styled-table">
     <thead>
-      <tr>
-        <th>Films</th>
-      </tr>
+        <tr>
+            <th>Films</th>
+        </tr>
+    </thead>
+    <tbody>
         <% if (films.length === 0) { %>
-            <tr>
-              <td colspan="2">No films found</td>
+        <tr>
+            <td colspan="2">No films found</td>
+        </tr>
+        <% } else { %>
+        <% films.forEach((film, index) => { %>
+          <% if (film.title.toLowerCase() === searchQuery.toLowerCase()) { %>
+            <tr class="highlight-row">
+              <td><a href="/films/<%= film.film_id %>"><%= film.title %></a></td>
             </tr>
           <% } else { %>
-            <% films.forEach((film, index) => { %>
-              <% if (film.title.toLowerCase() === searchQuery.toLowerCase()) { %>
-                <tr id="highlight" class="highlight">
-              <% } else { %>
-                <tr>
-              <% } %>
-                <td><%= film.title %></td>
-              </tr>
-            <% }); %>
+            <tr>
+              <td><a href="/films/<%= film.film_id %>"><%= film.title %></a></td>
+            </tr>
           <% } %>
-          <script>
-            const highlightRows = document.querySelectorAll('.highlight');
-            if (highlightRows.length > 0) {
-              highlightRows.forEach((row) => {
-                row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                row.classList.add('highlight');
-              });
-            }
-          </script>
-          
+        <% }); %>
+        <% } %>
+    </tbody>
+</table>
+
+<script>
+    const highlightRows = document.querySelector('.highlight-row');
+    if (highlightRows.length > 0) {
+        highlightRows.forEach((row) => {
+            row.classList.add('highlight');
+        });
+        const lastHighlightedRow = highlightRows[highlightRows.length - 1];
+        lastHighlightedRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+</script>
     </tbody>
   </table>
   </div>
 
   <div class="categories-table">
-  <table class="styled-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
-    <tbody>
-        <% if (categories.length === 0) { %>
-            <tr>
+    <table class="styled-table">
+      <thead>
+          <tr>
+              <th>Name</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% if (categories.length === 0) { %>
+          <tr>
               <td colspan="2">No categories found</td>
-            </tr>
+          </tr>
           <% } else { %>
-            <% categories.forEach((category, index) => { %>
-              <% if (category.name.toLowerCase() === searchQuery.toLowerCase()) { %>
-                <tr id="highlight2" class="highlight2">
+          <% categories.forEach((category, index) => { %>
+          <% if (category.name.toLowerCase() === searchQuery.toLowerCase()) { %>
+          <tr id="highlight2" class="highlight2">
               <% } else { %>
-                <tr>
+          <tr>
               <% } %>
-                <td><%= category.name %></td>
-              </tr>
-            <% }); %>
+              <td><%= category.name %></td>
+          </tr>
+          <% }); %>
           <% } %>
-          <script>
-            const highlightRow2 = document.querySelector('#highlight2');
-            if (highlightRow2) {
-              highlightRow2.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              highlightRow2.classList.add('highlight');
-            }
-          </script>
+      </tbody>
+  </table>
+  
+  <script>
+      const highlightRow2 = document.querySelector('#highlight2');
+      if (highlightRow2) {
+          highlightRow2.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          highlightRow2.classList.add('highlight2');
+      }
+  </script>
           
     </tbody>
   </table>
