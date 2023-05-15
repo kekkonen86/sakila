@@ -70,7 +70,7 @@
   color: white;
 }
 
-.films-table .highlight-row {
+.films-table .highlight-row a {
   background-color: #92010c;
   color: white;
 }
