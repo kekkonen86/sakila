@@ -5,38 +5,76 @@
     <link rel="stylesheet" href="../public/styles.css">
 </head>
 <h5>Tässä tiedot meidän elokuvista ja kategorioista.</h1>
+<img src="/public/images/logo_valkoinen_pohja.png" alt="sakila tummapohja logo" class="sakila-tumma">
+
 <div class="container">
 <div class="table-container">
 <div class="films-table">
-<table>
+<table class="styled-table">
     <thead>
       <tr>
-        <th>Title</th>
+        <th>Films</th>
       </tr>
-    </thead>
-    <tbody>
-      <% films.forEach((film) => { %>
-        <tr>
-          <td><%= film.title %></td>
-        </tr>
-      <% }); %>
+        <% if (films.length === 0) { %>
+            <tr>
+              <td colspan="2">No films found</td>
+            </tr>
+          <% } else { %>
+            <% films.forEach((film, index) => { %>
+              <% if (film.title.toLowerCase() === searchQuery.toLowerCase()) { %>
+                <tr id="highlight" class="highlight">
+              <% } else { %>
+                <tr>
+              <% } %>
+                <td><%= film.title %></td>
+              </tr>
+            <% }); %>
+          <% } %>
+          <script>
+            const highlightRows = document.querySelectorAll('.highlight');
+            if (highlightRows.length > 0) {
+              highlightRows.forEach((row) => {
+                row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                row.classList.add('highlight');
+              });
+            }
+          </script>
+          
     </tbody>
   </table>
   </div>
 
   <div class="categories-table">
-  <table>
+  <table class="styled-table">
     <thead>
       <tr>
         <th>Name</th>
       </tr>
     </thead>
     <tbody>
-      <% categories.forEach((category) => { %>
-        <tr>
-          <td><%= category.name %></td>
-        </tr>
-      <% }); %>
+        <% if (categories.length === 0) { %>
+            <tr>
+              <td colspan="2">No categories found</td>
+            </tr>
+          <% } else { %>
+            <% categories.forEach((category, index) => { %>
+              <% if (category.name.toLowerCase() === searchQuery.toLowerCase()) { %>
+                <tr id="highlight2" class="highlight2">
+              <% } else { %>
+                <tr>
+              <% } %>
+                <td><%= category.name %></td>
+              </tr>
+            <% }); %>
+          <% } %>
+          <script>
+            const highlightRow2 = document.querySelector('#highlight2');
+            if (highlightRow2) {
+              highlightRow2.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              highlightRow2.classList.add('highlight');
+            }
+          </script>
+          
     </tbody>
   </table>
 </div>

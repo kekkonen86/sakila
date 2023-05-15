@@ -26,7 +26,10 @@ const connection = mysql.createConnection({
   });
 
   app.get('/films', (req, res) => {
-    const filmQuery = 'SELECT * FROM film';
+    const { hae } = req.query;
+    const searchQuery = hae || ''; // Provide a default value of an empty string if hae is undefined
+  
+    let filmQuery = 'SELECT * FROM film';
     const categoryQuery = 'SELECT * FROM category';
   
     connection.query(filmQuery, (filmError, filmResults) => {
@@ -41,11 +44,11 @@ const connection = mysql.createConnection({
           return;
         }
   
-        res.render('films', { films: filmResults, categories: categoryResults });
+        res.render('films', { films: filmResults, categories: categoryResults, searchQuery: searchQuery });
       });
     });
   });
-  
-  app.listen(port, () => {
+    
+    app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
   });

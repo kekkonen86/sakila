@@ -1,4 +1,8 @@
-  .container {
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Teko:wght@600&display=swap');
+
+
+
+.container {
     display: flex;
     justify-content: center;
   }
@@ -15,8 +19,97 @@
 
   .sakila{
     margin-right: 16em;
+    color: #92010c;
   }
 
   h5{
     margin: 2em;
   }
+
+  .highlight {
+    background-color: yellow;
+  }
+  .highlight2 {
+    background-color: yellow;
+  }
+  
+  .navi{
+    background-color: #373435;
+   }
+
+   table{
+    font-family: 'Lato', sans-serif;
+   }
+
+   body{
+    background-color: #ffffff;
+    font-family: 'Lato', sans-serif;
+   }
+
+   .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(55, 52, 53, 0.15);
+}
+
+.styled-table thead tr {
+  background-color: #20aad8;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #20aad8;
+}
+
+h5{
+  color: #92010c;
+}
+
+h1,h2,h3,h4,h5{
+ font-family: 'Teko', sans-serif;
+}
+/* Nappi */
+
+button {
+  width: 150px;
+  height: 60px;
+  border: 3px solid #20aad8;
+  border-radius: 45px;
+  transition: all 0.3s;
+  cursor: pointer;
+  background: white;
+  font-size: 1.2em;
+  font-weight: 550;
+  font-family: 'Montserrat', sans-serif;
+}
+
+button:hover {
+  background: #92010c;
+  color: white;
+  font-size: 1.5em;
+}
+
+.sakila-tumma{
+  width: 100px; 
+  height: 100px;
+  border-radius: 50%; 
+  object-fit: cover; 
+  object-position: center;
+}

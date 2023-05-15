@@ -1,16 +1,15 @@
-<header class="p-3 bg-dark text-white mb-4">
+<header class="navi">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        </ul>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"></ul>
+        <img src="/public/images/logo_tummapohja.png" alt="sakila tummapohja logo" class="sakila-tumma">
         <h1 class="sakila">Sakila</h1>
-        <form action="/hae" method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="text" class="form-control form-control-dark" placeholder="Hae..." aria-label="Hae" name="hae">
+        <form action="/films" method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="text" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" name="hae" value="<%= searchQuery %>">
           <div class="text-end">
-            <button type="submit" class="btn btn-outline-light me-2">Hae</button>
+            <button>Hae</button>
           </div>
         </form>
       </div>
     </div>
   </header>
-  
